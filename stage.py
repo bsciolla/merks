@@ -27,10 +27,10 @@ class Stage:
         # find gradient scale
         self.gradscalex = (self.patch[1:, :]-self.patch[:-1, :]).max()
         self.gradscaley = (self.patch[:, 1:]-self.patch[:, :-1]).max()
-        
+
         self.random_areas()
         self.refresh_costmap()
-        
+
     # ------------------------------------------------ #
 
     def refresh_costmap(self):
@@ -48,7 +48,7 @@ class Stage:
         for j in range(self.areas.shape[1]):
             self.areas[0, j] = random.random() * (WIN_X - PATCHSIZE - 1)
             self.areas[1, j] = random.random() * (WIN_Y - PATCHSIZE - 1)
-    
+
     # ------------------------------------------------ #
 
     def move_areas(self):
@@ -82,23 +82,23 @@ class Stage:
         y = (int)(y % (WIN_Y - 1))
         return(self.costmap[x, y])
 
-
     # ------------------------------------------------ #
-    
+
     def displaymap(self):
-        costmap = self.costmap>0.5
+        costmap = self.costmap > 0.5
         showmap = numpy.zeros([costmap.shape[0],
-                            costmap.shape[1],
-                            3
-                            ])
+                               costmap.shape[1],
+                               3
+                               ])
         costmap = numpy.expand_dims(costmap, 2)
         costmap = (costmap/costmap.max())*255/2.0
-        showmap[:,:,0] = costmap[:,:,0]*0.2 + 155/2.0
-        showmap[:,:,1] = costmap[:,:,0] + 155/2.0
-        showmap[:,:,2] = costmap[:,:,0]*0.5 + 205/2.0
+        showmap[:, :, 0] = costmap[:, :, 0]*0.2 + 155/2.0
+        showmap[:, :, 1] = costmap[:, :, 0] + 155/2.0
+        showmap[:, :, 2] = costmap[:, :, 0]*0.5 + 205/2.0
         return(showmap)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+
 
 def _patch(sizex, sizey):
     patch = numpy.zeros([sizex, sizey])
@@ -107,7 +107,7 @@ def _patch(sizex, sizey):
         for j in range(sizey):
             patch[i, j] = math.exp(
                 -(i - (sizex - 1)/2.0)**2.0/(2.0*(sizex*sigma)**2.0)
-                -(j - (sizey - 1)/2.0)**2.0/(2.0*(sizey*sigma)**2.0)
+                - (j - (sizey - 1)/2.0)**2.0/(2.0*(sizey*sigma)**2.0)
             )
     return(patch)
 

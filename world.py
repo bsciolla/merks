@@ -16,6 +16,7 @@ from globalvars import PATCHSIZE
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
+
 class World:
 
     # ------------------------------------------------ #
@@ -40,7 +41,6 @@ class World:
             lifeanddeath.aging(mek, self.stage_)
         lifeanddeath.deathandrecycle(self.merklist)
 
-
     # ------------------------------------------------ #
 
 
@@ -48,11 +48,11 @@ def update_sprites(spritelist, world):
     for (ix, merk) in enumerate(spritelist):
         x, y, angle = world.merklist[ix].svars.get_pos()
         merk.update(x, y, angle)
-        
+
 
 def update_activations(mek, stage_):
     x, y, angle = mek.svars.x, mek.svars.y, mek.svars.angle
     sensorsdata = numpy.array(
-        stage_.get_local_fields(x, y, angle) )
+        stage_.get_local_fields(x, y, angle))
     actions = mek.nn.update_activations(sensorsdata)
     return(actions)

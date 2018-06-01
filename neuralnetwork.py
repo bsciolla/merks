@@ -232,7 +232,8 @@ class Neuralnetwork:
 
     def update_activations(self, sensors):
         # Set neuron values to activations
-        self.activations[self.sensors_idx] = sensors[self.sensors_found]
+        self.activations[self.sensors_idx] = self.activations[self.sensors_idx] + \
+            sensors[self.sensors_found]
         self.activations = numpy.clip(
             numpy.matmul(self.links, self.activations),
             -1.0, 1.0)

@@ -5,4 +5,3 @@ def weightnode(a):
     for (scale, i) in enumerate(a):
         w = w + (i)*(2**(len(a)-scale-1))
     return(w)
-

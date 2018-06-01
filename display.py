@@ -4,7 +4,7 @@ import pygame
 from pygame.compat import geterror
 
 from pygame.locals import KEYDOWN, \
-    RLEACCEL, K_ESCAPE, QUIT, MOUSEBUTTONDOWN, MOUSEBUTTONUP, K_q
+    RLEACCEL, K_ESCAPE, QUIT, MOUSEBUTTONDOWN, MOUSEBUTTONUP, K_q, K_p
 from pygame.transform import rotate
 
 main_dir = os.path.split(os.path.abspath(__file__))[0]
@@ -62,9 +62,9 @@ try:
     pygame.display.set_caption('World of merks')
     pygame.mouse.set_visible(1)
 
-    
+
 #showmap = thisworld.stage_.displaymap()
-        #snapshot = pygame.surfarray.make_surface(showmap)
+    #snapshot = pygame.surfarray.make_surface(showmap)
     #screen.blit(snapshot, (0, 0))
     pygame.display.flip()
     clock = pygame.time.Clock()
@@ -76,6 +76,7 @@ try:
     allsprites = pygame.sprite.RenderPlain(spritelist)
 
     going = True
+    pause = False
 
     while going:
         clock.tick(CLOCK_FPS)
@@ -87,9 +88,13 @@ try:
                 going = False
             elif event.type == KEYDOWN and event.key == K_q:
                 going = False
+            elif event.type == KEYDOWN and event.key == K_p:
+                pause = not pause
             elif event.type == MOUSEBUTTONDOWN:
                 going = True
 
+        if pause == True:
+            continue
         thisworld.step_forward()
         world.update_sprites(spritelist, thisworld)
         showmap = thisworld.stage_.displaymap()

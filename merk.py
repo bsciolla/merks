@@ -23,13 +23,14 @@ class Merk:
         self.gen.random_adn()
         self.gen.make_clean_rules()
         nnbuilder.build_nn(self.nn, self.gen, verbose=False)
-    
+
     # ------------------------------------------------ #
-    
+
     def action(self):
         self.svars.action()
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+
 
 def example():
     random.seed(5)

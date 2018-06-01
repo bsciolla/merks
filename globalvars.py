@@ -33,4 +33,3 @@ ACTIONS = [[0, 1], [1, 0], [1, 1]]
 # lifeanddeath.py
 AGEING_RATE = 0.01
 NUM_RECYCLE = 2
-

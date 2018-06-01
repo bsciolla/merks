@@ -89,8 +89,8 @@ class Genome:
 
     def random_adn(self):
         self.adn = [random.randint(0, 1)
-                       for i in range(self.adn_length)]
-        
+                    for i in range(self.adn_length)]
+
     # ------------------------------------------------ #
 
     def make_clean_rules(self):
@@ -143,7 +143,8 @@ def example_genome():
     b.clear_rules()
     print('\n')
     b.show_rules()
-    
+
+
 def test_genome():
     random.seed(4)
     b = Genome()
@@ -152,9 +153,4 @@ def test_genome():
     assert(b.rules[0].predecessor == [0])
     assert(b.rules[0].successor == [])
     assert(b.rules[0].extra == [1])
-    assert(b.rules[0].codes == [0,1,1,0])
-    
-    
-
-
-
+    assert(b.rules[0].codes == [0, 1, 1, 0])

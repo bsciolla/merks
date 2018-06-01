@@ -13,7 +13,7 @@ class Stagevars:
     # ------------------------------------------------ #
 
     def __init__(self):
-        
+
         # general implicit
         self.x = random.random()*WIN_X
         self.y = random.random()*WIN_Y
@@ -32,17 +32,19 @@ class Stagevars:
     def action(self):
         speed = 2
         self.angle = self.angle + self.turn * math.pi/8.0
-        self.x = self.x + speed * _activation_av(self.av) * math.sin(self.angle)
-        self.y = self.y - speed * _activation_av(self.av) * math.cos(self.angle)
+        self.x = self.x + speed * \
+            _activation_av(self.av) * math.sin(self.angle)
+        self.y = self.y - speed * \
+            _activation_av(self.av) * math.cos(self.angle)
 
     # ------------------------------------------------ #
 
     def get_pos(self):
-        
+
         x = (int)(self.x % (WIN_X - 1))
         y = (int)(self.y % (WIN_Y - 1))
         return(x, y, self.angle)
-    
+
     def set_activations(self, action):
         self.av = action[0]
         self.turn = action[1] - action[2]
@@ -79,5 +81,3 @@ def example():
         print(a.angle)
         print(a.x)
         print(a.y)
-
-
