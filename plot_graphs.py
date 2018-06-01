@@ -19,8 +19,8 @@ def plot_neural_network(mek):
     eneg = [(u, v) for (u, v, d) in G.edges(data=True) if d['weight'] <= -0.5]
 
     arrowsize = 50
-    colorspos = numpy.arange(len(epos))/5.0+len(epos)/2.0
-    colorsneg = numpy.arange(len(eneg))/5.0+len(eneg)/2.0
+    colorspos = numpy.arange(len(epos))/5.0+4.0*len(epos)/5.0
+    colorsneg = numpy.arange(len(eneg))/5.0+4.0*len(eneg)/5.0
     nx.draw_networkx_edges(G, pos, edgelist=epos, edge_color=colorspos,
                            width=3, arrowsize=arrowsize, alpha=1, arrowstyle='->', edge_cmap=plt.cm.Blues)
     nx.draw_networkx_edges(G, pos, edgelist=eneg,
