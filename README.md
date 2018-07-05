@@ -2,7 +2,7 @@
 
 **Artificial life based on neural network animals  - "Merks" - evolving in a rich environment**
 
-Keywords: Artificial life, Soft Articial Life, Artificial Neural Networks, Deep neural networks, Genetic Algorithms, Evolution, Natural Selection, Open-Ended Evolution, Swarm Intelligence
+Keywords: Artificial life, Soft Articial Life, Artificial Neural Networks, Deep neural networks, Genetic Algorithms, Evolution, Natural Selection, Open-Ended Evolution, Swarm Intelligence, Emergence
 
 Meet the Merks
 -------------
