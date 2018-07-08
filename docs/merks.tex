@@ -1,0 +1,119 @@
+
+%\documentclass[aps,twocolumn,groupedaddress,floatfix]{revtex4}
+\documentclass[twocolumn,groupedaddress,floatfix]{article}
+\usepackage{amsmath}
+%\usepackage{epsfig}
+%\usepackage{amssymb}
+%\usepackage{alltt}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[dvipsnames]{xcolor}
+
+\newcommand{\Pred}{\mathtt{Predecessor}}
+\newcommand{\Succ}{\mathtt{Successor}}
+\newcommand{\Extra}{\mathtt{Extra}}
+\newcommand{\Codes}{\mathtt{Codes}}
+
+
+
+\newcommand{\paragraphs}[1]{\emph{#1}.---}
+\newcommand{\todiscuss}[1]{{\color{Mahogany}*** #1***}}
+
+\def \plotwi{8.7 cm}
+\begin{document}
+
+\title{Merks - a small learning world}
+\author{Bruno Sciolla}
+
+
+%\begin{abstract}
+%\end{abstract}
+\maketitle
+
+
+
+\section{Current Merk}
+
+The world of merks contains individuals called merks.
+Each has a genome, a neural network, and a physical existence in the stage, that describes where the merk is, and what it does.
+\subsection{Neurons}
+A neuron with index $i \in [0, N]$ is connected to other neurons via links stored in a (signed) adjacency matrix $l_{ij}$. $l_{ij} = \{ -1, 0, 1\}$. A neuron has an activation value $a_i$. There are three types of neurons: {\bf sensor} neurons, {\bf action} neurons and normal neurons. Each neuron also has a binary label $L_i$.
+
+
+At each time step the activation is updated according to:
+\begin{align}
+& a_i(t+1) = \sigma \left( \sum_j l_{ij} a_j(t) + s_i(t) \right)
+\end{align}
+where $\sigma(x) = \{-1,x,1\}$ on the intervals $[-\infty, -1]$, $[-1, 1]$, $[1, \infty]$ respectively.
+The external sensor contribution $s_i(t)$ is added if the neuron is a sensor neuron, the value of which is fixed by the stage (can be any external impulse like bumping on a wall, the proximity to resources, or any 'physical sense' that the merk can have of the world).
+
+\subsection{Actions}
+If the neuron is an action neuron, its activation value $a_i(t)$ results in an action on the stage. For example, if the forward action neuron has activation value 1, the merk steps forward. Other possible actions are turning left or right, jumping, kicking, attempting to kill or reproduce, etc.
+
+\subsection{Genome}
+The genome is a binary sequence of fixed universal length.
+$b = \{ 011000101110 \cdots \}$, typically 1000 binary numbers.
+
+\subsection{Rules}
+The genome is read by a sequence reader to produce rules of the form:
+\begin{align}
+&\Pred \rightarrow \Succ, \Extra, \Codes\\
+&\textrm{Example}: 010 \rightarrow \{\}, 00, 0111
+\end{align}
+The predecessor, the successor and extra are three binary label. In the example, $010$, an empty label $\{ \}$, and $00$. The codes block is a succession of 4 bits.
+
+\subsection{From genome to rules}
+The genome is read in order, starting from the beginning of the sequence.
+
+A valid rule starts with a $11$.
+The next segment defines $\Pred$, the next segment defines $\Succ$, the next segment defines $\Extra$ and finally $4$ bits are used to define $\Codes$.
+Because segments do not have a fixed length, a special rule is used to define a segment. The rule is that the odd rank bites (first, third, fifth, etc.) define the length of the segment: the segment extends as far as there are zeros in odd bites. The even bites define the actual value of the segment. So for example:
+\begin{align}
+&1 \Rightarrow \{\}\\
+&001 \Rightarrow 0\\
+&011 \Rightarrow 1\\
+&0a0b1 \Rightarrow ab\\
+&0a0b0c1 \Rightarrow abc\\
+&0a0b0c0d1 \Rightarrow abcd \\
+&\ldots  \notag 
+\end{align}
+
+The genome is traversed to produce rules using non-overlapping segments.
+Only some rules are kept: a valid rule must have a nonempty $\Pred$ and either $\Succ$ or $\Extra$ must be nonempty. A label longer than 6 bits is truncated to a length of 6 bits. Otherwise no limitations are applied.
+
+\subsection{From rules to network}
+The network is initialized with 3 neurons labelled $001, 000, 01$ and links $001 \xrightarrow[]{1} 000$, $000 \xrightarrow[]{1} 01$. The number above the arrow means that the link value is 1 in the adjacency matrix, e.g. $l_{01} = 1$.
+Notice that several neurons can have the same label in the following.
+
+The network is built, iterating over each neuron. For each neuron $\mathtt{Neuron}$, the $\Pred$ of the rule matching the label of the neuron best is found.
+Basically matching means that every bit of the rule agrees from left to right with the corresponding bit of the label. Thus the rule can be at most as long as the label to match.
+For example for a label $\mathtt{Neuron} = 001$:
+\begin{align*}
+&\textrm{rule with } \Pred \;0 \textrm{ matches} \\
+&\textrm{rule with } \Pred \;1 \textrm{ does not match} \\
+&\textrm{rule with } \Pred \;00 \textrm{ matches} \\
+&\textrm{rule with } \Pred \;01 \textrm{ does not match} \\
+&\textrm{rule with } \Pred \;001 \textrm{ matches} \\
+&\textrm{rule with } \Pred \;0011 \textrm{ does not match}
+\end{align*}
+
+So for each neuron $\mathtt{Neuron}$, one rule is choosed, the one with longest $\Pred$ that matches the label. If there is no rule, we go to the next neuron.
+If there is a rule, the network is modified as follows.
+If label $\Extra$ is empty, the neuron is just labelled with a new name: $\Succ$. 
+If label $\Succ$ is empty, then let $\mathtt{Neighbors}$ be every neuron whose name matches $\Extra$.
+Then if the bit $\Codes[1]$ is 1, then a link is made $\mathtt{Neuron} \xrightarrow[]{c} \mathtt{Neighbors}$ where $c = 1$ if $\Codes[2] = 0$ and $c = -1$ if $\Codes[2] = 1$.
+Also, if the bit $\Codes[3]$ is 1, then a link is made $\mathtt{Neighbors} \xrightarrow[]{c} \mathtt{Neuron}$ where $c = 1$ if $\Codes[4] = 0$ and $c = -1$ if $\Codes[4] = 1$.
+If both $\Succ$ and $\Extra$ are nonempty, a new neuron with label $\Extra$ is created. The new neuron is created with every link that $\mathtt{Neuron}$ had with other neurons. Afterwards, $\mathtt{Neuron}$ is renamed to $\Succ$.
+Also, a link $\mathtt{Neuron} \xrightarrow[]{c_2} \mathtt{Extra}$ is created if $\Codes[1] = 1$ and a link $\mathtt{Extra} \xrightarrow[]{c_4} \mathtt{Neuron}$ if $\Codes[3] = 1$ with signs $c_2$ and $c_4$ fixed by the bits  $\Codes[2]$ and  $\Codes[4]$ respectively.
+
+
+\end{document}
+
+
+
+
+
+
+
+
