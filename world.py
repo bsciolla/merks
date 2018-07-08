@@ -53,6 +53,6 @@ def update_sprites(spritelist, world):
 def update_activations(mek, stage_):
     x, y, angle = mek.svars.x, mek.svars.y, mek.svars.angle
     sensorsdata = numpy.array(
-        stage_.get_local_fields(x, y, angle))
+        list(stage_.get_local_fields(x, y, angle)) + [1.0,-1.0])
     actions = mek.nn.update_activations(sensorsdata)
     return(actions)

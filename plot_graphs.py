@@ -7,7 +7,7 @@ plt.ion()
 
 # test
 def plot_neural_network(mek):
-    G = nx.DiGraph(mek.nn.links)
+    G = nx.DiGraph(numpy.transpose(mek.nn.links))
     mylabels = dict(zip(range(len(mek.nn.neurons)),
                         [to_string(i)+'\n#'
                          + str(ix)+'' for (ix, i) in enumerate(mek.nn.neurons)]))

@@ -4,9 +4,7 @@ import numpy
 import random
 import pdb
 
-from globalvars import MAX_HASH
-from globalvars import MAX_NEURONS
-from globalvars import NEURAL_NOISE
+from globalvars import MAX_HASH, MAX_NEURONS, NEURAL_NOISE, FACTOR_MATRIX
 
 import rule
 from weightnode import weightnode as weight_node
@@ -235,7 +233,7 @@ class Neuralnetwork:
         self.activations[self.sensors_idx] = self.activations[self.sensors_idx] + \
             sensors[self.sensors_found]
         self.activations = numpy.clip(
-            numpy.matmul(self.links, self.activations),
+            numpy.matmul(self.links, self.activations)*FACTOR_MATRIX,
             -1.0, 1.0)
         # Get actions from neuron values
         actions = numpy.zeros(len(self.actions_found))

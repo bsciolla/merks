@@ -13,6 +13,7 @@ BUILDING_CYCLES = 3
 # neuralnetwork.py
 MAX_NEURONS = 50
 NEURAL_NOISE = 0.6
+FACTOR_MATRIX = 0.5
 
 # stage.py
 WIN_X = 400
@@ -25,8 +26,8 @@ MERKS_NUM = 150
 CLOCK_FPS = 15
 
 # nnbuilder.py
-# costmap_value, costmap_grad_forw, costmap_grad_lat
-SENSORS = [[0], [1], [0, 0]]
+# costmap_value, costmap_grad_forw, costmap_grad_lat, activate, inhibate
+SENSORS = [[0], [1], [0, 0], [0,0,0], [1,0,0]]
 # move forward, turn left, turn right
 ACTIONS = [[0, 1], [1, 0], [1, 1]]
 
