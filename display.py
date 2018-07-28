@@ -10,7 +10,8 @@ from pygame.transform import rotate
 main_dir = os.path.split(os.path.abspath(__file__))[0]
 data_dir = os.path.join(main_dir, 'data')
 
-from globalvars import WIN_X, WIN_Y, MERKS_NUM, CLOCK_FPS
+from globalvars import WIN_X, WIN_Y, MERKS_NUM, CLOCK_FPS, GRID_X, GRID_Y, \
+    GRID_ELEMENT_SIZE_X, GRID_ELEMENT_SIZE_Y
 
 import numpy
 import world
@@ -47,8 +48,8 @@ class Merksprite(pygame.sprite.Sprite):
     # ------------------------------------------------ #
 
     def update(self, x, y, angle):
-        self.rect.midtop = (x, y)
-        self.image = rotate(self.original, -angle*180.0/numpy.pi)
+        self.rect.midtop = (x * GRID_ELEMENT_SIZE_X, y * GRID_ELEMENT_SIZE_Y)
+        self.image = rotate(self.original, -angle*90.0)
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #

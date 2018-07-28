@@ -6,10 +6,8 @@ import math
 #import matplotlib as plt
 #import matplotlib.pyplot as plt
 
-from globalvars import WIN_X
-from globalvars import WIN_Y
-from globalvars import NB_AREAS
-from globalvars import PATCHSIZE
+from globalvars import WIN_X, WIN_Y, NB_AREAS, PATCHSIZE, \
+    GRID_X, GRID_Y, GRID_ELEMENT_SIZE_X, GRID_ELEMENT_SIZE_Y
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 

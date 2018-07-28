@@ -3,6 +3,7 @@ from globalvars import SENSORS, ACTIONS
 from plot_graphs import plot_neural_network
 # Utility functions to analyze the current species
 
+
 def proxygen(mek, mek2):
     return(
         numpy.abs(numpy.array(mek.gen.adn) -
