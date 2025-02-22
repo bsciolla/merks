@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297mm"
+   height="420mm"
+   viewBox="0 0 297 420"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.1 (91b66b0783, 2023-11-16)"
+   sodipodi:docname="Roadmap.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.91683267"
+     inkscape:cx="538.81152"
+     inkscape:cy="614.61597"
+     inkscape:window-width="2560"
+     inkscape:window-height="1494"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="353.26627"
+       y="273.48157"
+       width="396.15628"
+       height="168.33183"
+       id="rect15" />
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Gabriola;-inkscape-font-specification:Gabriola;fill:#ff0bcb;stroke-width:0.264583"
+       x="13.849425"
+       y="5.0028758"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+         x="13.849425"
+         y="5.0028758">Artificial life - concepts</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="13.779441"
+       y="15.346746"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="stroke-width:0.264583"
+         x="13.779441"
+         y="15.346746">Natural selection</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="15.270932"
+       y="37.081352"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="stroke-width:0.264583"
+         x="15.270932"
+         y="37.081352">Matériel génétique</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="25.227802"
+       y="43.477707"
+       id="text4"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="25.227802"
+         y="43.477707"
+         id="tspan5">DNA - Noyau</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="15.434779"
+       y="50.75111"
+       id="text6"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         style="stroke-width:0.264583"
+         x="15.434779"
+         y="50.75111">Evolution Darwinenne</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="21.99222"
+       y="57.081375"
+       id="text7"><tspan
+         sodipodi:role="line"
+         id="tspan7"
+         style="stroke-width:0.264583"
+         x="21.99222"
+         y="57.081375">Bactéries - Archée</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="30.44787"
+       y="62.960033"
+       id="text8"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="stroke-width:0.264583"
+         x="30.44787"
+         y="62.960033">Réduction du génome</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="31.569536"
+       y="69.862602"
+       id="text9"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         style="stroke-width:0.264583"
+         x="31.569536"
+         y="69.862602">Echange transfert latéral</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="16.163589"
+       y="114.98694"
+       id="text9-7"><tspan
+         sodipodi:role="line"
+         id="tspan9-1"
+         style="stroke-width:0.264583"
+         x="16.163589"
+         y="114.98694">Qu'est-ce qu'on sélectionne ?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="169.36467"
+       y="118.8203"
+       id="text9-7-1"><tspan
+         sodipodi:role="line"
+         id="tspan9-1-3"
+         style="stroke-width:0.264583"
+         x="169.36467"
+         y="118.8203">Facteurs de sélection</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="97.487549"
+       y="135.147"
+       id="text9-7-1-5"><tspan
+         sodipodi:role="line"
+         id="tspan9-1-3-9"
+         style="stroke-width:0.264583"
+         x="97.487549"
+         y="135.147">Extrinsèque - émergence </tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="97.487549"
+         y="140.43866"
+         id="tspan22">versus</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="97.487549"
+         y="145.73033"
+         id="tspan23">Intrinsèque</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="91.03688"
+       y="160.09186"
+       id="text9-7-1-5-2"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="91.03688"
+         y="160.09186"
+         id="tspan23-3">Organisme O/N</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="91.03688"
+         y="165.38351"
+         id="tspan26">Morphologie O/N</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="91.03688"
+         y="170.67519"
+         id="tspan27">Vie/mort O/N</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="91.03688"
+         y="175.96684"
+         id="tspan28">Espèces O/N</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="91.03688"
+         y="181.25851"
+         id="tspan29">Réseau de neurone O/N</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="91.03688"
+         y="186.55017"
+         id="tspan25" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="93.708359"
+       y="37.118755"
+       id="text10"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="stroke-width:0.264583"
+         x="93.708359"
+         y="37.118755">Eucharyotes</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="101.29523"
+       y="45.556965"
+       id="text11"><tspan
+         sodipodi:role="line"
+         id="tspan11"
+         style="stroke-width:0.264583"
+         x="101.29523"
+         y="45.556965">Fusion d'un noyau - mitochondrie</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="101.27773"
+       y="52.469189"
+       id="text12"><tspan
+         sodipodi:role="line"
+         id="tspan12"
+         style="stroke-width:0.264583"
+         x="101.27773"
+         y="52.469189">Archée</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="101.03369"
+       y="59.79047"
+       id="text13"><tspan
+         sodipodi:role="line"
+         id="tspan13"
+         style="stroke-width:0.264583"
+         x="101.03369"
+         y="59.79047">Reproduction sexuée</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="100.66763"
+       y="66.989723"
+       id="text14"><tspan
+         sodipodi:role="line"
+         id="tspan14"
+         style="stroke-width:0.264583"
+         x="100.66763"
+         y="66.989723">Comprendre le rôle de la reproduction sexuée</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text15"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';white-space:pre;shape-inside:url(#rect15);display:inline;fill:#4d4d4d"><tspan
+         x="353.26562"
+         y="287.89449"
+         id="tspan4">Ne pas prendre les choses pour acquises !
+</tspan><tspan
+         x="353.26562"
+         y="307.89449"
+         id="tspan48">De nombreuses espèces ont 3/4/5 fois un chromosome
+</tspan><tspan
+         x="353.26562"
+         y="327.89449"
+         id="tspan49">Les oiseaux on un système sexué ZW inversé (ZZ : mâle, </tspan><tspan
+         x="353.26562"
+         y="347.89449"
+         id="tspan50">ZW : femelle)
+</tspan><tspan
+         x="353.26562"
+         y="367.89449"
+         id="tspan51">Certains animaux ont un système sexué X0 (X : mâle, </tspan><tspan
+         x="353.26562"
+         y="387.89449"
+         id="tspan52">XX : femelle)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="28.85841"
+       y="123.37"
+       id="text16"><tspan
+         sodipodi:role="line"
+         id="tspan16"
+         style="stroke-width:0.264583"
+         x="28.85841"
+         y="123.37">Métabolisme</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';white-space:pre;inline-size:49.5694;display:inline;fill:#4d4d4d;stroke-width:0.264583"
+       x="174.11523"
+       y="125.79432"
+       id="text16-9"
+       transform="translate(-0.57716821,0.86575231)"><tspan
+         x="174.11523"
+         y="125.79432"
+         id="tspan53">Prospérer
+</tspan><tspan
+         x="174.11523"
+         y="131.08598"
+         id="tspan54">Sexuée
+</tspan><tspan
+         x="174.11523"
+         y="136.37764"
+         id="tspan55">Résistance aux prédateurs
+</tspan><tspan
+         x="174.11523"
+         y="141.6693"
+         id="tspan56">Résistance au parasitisme
+</tspan><tspan
+         x="174.11523"
+         y="146.96096"
+         id="tspan57">Conquête de milieux
+</tspan><tspan
+         x="174.11523"
+         y="152.25261"
+         id="tspan58">
+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="28.040657"
+       y="142.70537"
+       id="text17"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="stroke-width:0.264583"
+         x="28.040657"
+         y="142.70537">Morphogénèse</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="28.500992"
+       y="130.36395"
+       id="text17-2"><tspan
+         sodipodi:role="line"
+         id="tspan17-4"
+         style="stroke-width:0.264583"
+         x="28.500992"
+         y="130.36395">Morphologie intracelluraire</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="28.499554"
+       y="136.02591"
+       id="text17-2-3"><tspan
+         sodipodi:role="line"
+         id="tspan17-4-0"
+         style="stroke-width:0.264583"
+         x="28.499554"
+         y="136.02591">Echanges extracellulaires</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="27.636385"
+       y="149.60452"
+       id="text17-3"><tspan
+         sodipodi:role="line"
+         id="tspan17-0"
+         style="stroke-width:0.264583"
+         x="27.636385"
+         y="149.60452">Système immunitaire</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="27.367487"
+       y="156.07652"
+       id="text18"><tspan
+         sodipodi:role="line"
+         id="tspan18"
+         style="stroke-width:0.264583"
+         x="27.367487"
+         y="156.07652">Différentiation - tissus</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="27.463779"
+       y="162.1368"
+       id="text19"><tspan
+         sodipodi:role="line"
+         id="tspan19"
+         style="stroke-width:0.264583"
+         x="27.463779"
+         y="162.1368">Système nerveux</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="27.319197"
+       y="168.62993"
+       id="text20"><tspan
+         sodipodi:role="line"
+         id="tspan20"
+         style="stroke-width:0.264583"
+         x="27.319197"
+         y="168.62993">Cerveau</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="123.08112"
+       y="123.08112"
+       id="text21"><tspan
+         sodipodi:role="line"
+         id="tspan21"
+         style="stroke-width:0.264583"
+         x="123.08112"
+         y="123.08112" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="90.038239"
+       y="126.97701"
+       id="text24"><tspan
+         sodipodi:role="line"
+         id="tspan24"
+         style="stroke-width:0.264583"
+         x="90.038239"
+         y="126.97701">Pour un modèle évolutif :</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="78.306244"
+       y="198.5652"
+       id="text24-3"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="78.306244"
+         y="198.5652"
+         id="tspan30">Arguments</tspan></text>
+    <rect
+       style="fill:#4d4d4d;stroke-width:0.264583"
+       id="rect24"
+       width="2.5972569"
+       height="15.583542"
+       x="91.914032"
+       y="131.20947" />
+    <rect
+       style="fill:#ffd5d5;stroke-width:0.354854"
+       id="rect24-1"
+       width="2.5972569"
+       height="28.031189"
+       x="78.288895"
+       y="202.52927" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="83.256393"
+       y="207.32472"
+       id="text31"><tspan
+         sodipodi:role="line"
+         id="tspan31"
+         style="stroke-width:0.264583"
+         x="83.256393"
+         y="207.32472">Plus c'est extrinsèque plus c'est ouvert</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="83.460449"
+       y="214.97697"
+       id="text32"><tspan
+         sodipodi:role="line"
+         id="tspan32"
+         style="stroke-width:0.264583"
+         x="83.460449"
+         y="214.97697">Oui mais aller vers le plus intéressant </tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="83.460449"
+         y="220.26863"
+         id="tspan33">- Intrinsèque en tant que raccourci</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;stroke-width:0.264583"
+       x="83.358414"
+       y="228.13882"
+       id="text34"><tspan
+         sodipodi:role="line"
+         id="tspan34"
+         style="stroke-width:0.264583"
+         x="83.358414"
+         y="228.13882">Possible de partir de l'intrinsèque et généraliser</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+       x="167.81166"
+       y="161.75139"
+       id="text40"><tspan
+         sodipodi:role="line"
+         id="tspan40"
+         style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+         x="167.81166"
+         y="161.75139">Ecologie</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';white-space:pre;inline-size:63.0127;display:inline;fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+       x="176.32487"
+       y="168.8217"
+       id="text41"><tspan
+         x="176.32487"
+         y="168.8217"
+         id="tspan59">Certaines espèces sont meilleures </tspan><tspan
+         x="176.32487"
+         y="174.11336"
+         id="tspan60">pour investir certaines milieux</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+       x="173.34877"
+       y="185.38831"
+       id="text42"><tspan
+         sodipodi:role="line"
+         id="tspan42"
+         style="stroke-width:0.264583"
+         x="173.34877"
+         y="185.38831">Les lichens sur la roche brute,</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="173.34877"
+         y="190.67996"
+         id="tspan43">puis les mousses, puis les herbes</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="173.34877"
+         y="195.97163"
+         id="tspan44">puis le taillis, puis la forêt</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';white-space:pre;inline-size:93.9894;display:inline;fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+       x="175.08328"
+       y="203.65164"
+       id="text45"><tspan
+         x="175.08328"
+         y="203.65164"
+         id="tspan61">On peut même dire qu'en essence les espèces </tspan><tspan
+         x="175.08328"
+         y="208.9433"
+         id="tspan62">pionnières
+</tspan><tspan
+         x="175.08328"
+         y="214.23496"
+         id="tspan63">transforment le milieu et rendent possible leur </tspan><tspan
+         x="175.08328"
+         y="219.52662"
+         id="tspan64">remplacement par les espèces suivantes</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Leelawadee UI';-inkscape-font-specification:'Leelawadee UI';white-space:pre;inline-size:91.8198;display:inline;fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+       x="191.91823"
+       y="227.22057"
+       id="text47"
+       transform="translate(-18.180798,16.016418)"><tspan
+         x="191.91823"
+         y="227.22057"
+         id="tspan65">En tout cas, un milieu immutable (intrinsèque) ne </tspan><tspan
+         x="191.91823"
+         y="232.51223"
+         id="tspan66">rend pas ça possible
+</tspan><tspan
+         x="191.91823"
+         y="237.80388"
+         id="tspan67">il doit y avoir, dans un modèle, des </tspan><tspan
+         x="191.91823"
+         y="243.09554"
+         id="tspan68">caractéristiques variables &quot;extrinsèque&quot; dans le </tspan><tspan
+         x="191.91823"
+         y="248.3872"
+         id="tspan69">milieu pour le permettre</tspan></text>
+  </g>
+</svg>
