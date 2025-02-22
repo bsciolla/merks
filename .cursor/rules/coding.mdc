@@ -1,0 +1,13 @@
+---
+description: instructions for coding Python3
+globs: 
+---
+Tools
+======
+
+- The code is written in Python3 with the pygame library.
+- Use type safe coding
+- The style of current code may be deprecated, use state-of-the-art
+- Don't comment on the code created unless really, really necessary
+- Be terse, spare in descriptions of what you do
+- Don't use comments in the code
