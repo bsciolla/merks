@@ -1,4 +1,4 @@
-
+from typing import List
 import stage
 import merk
 import nnbuilder
@@ -12,9 +12,9 @@ from globalvars import AGEING_RATE, NUM_RECYCLE, ADN_LENGTH
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def aging(mek, stage_):
+def aging(mek: merk.Merk, stage_: stage.Stage) -> None:
     field = stage_.get_local_cost(mek.svars.x, mek.svars.y)
-    if field > 0.5:
+    if mek.svars.speed > 0.5:
         mek.svars.health = mek.svars.health + AGEING_RATE/2.0
     else:
         mek.svars.health = mek.svars.health - AGEING_RATE
@@ -26,7 +26,7 @@ def aging(mek, stage_):
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
-def deathandrecycle(merklist):
+def deathandrecycle(merklist: List[merk.Merk]) -> None:
     healthlist = numpy.array([mek.svars.health for mek in merklist])
     healthsort = healthlist.argsort()
     for i in range(0, NUM_RECYCLE):
@@ -38,7 +38,7 @@ def deathandrecycle(merklist):
         merklist[idx_die1] = mek
 
 
-def newmerk(merk1, merk2):
+def newmerk(merk1: merk.Merk, merk2: merk.Merk) -> merk.Merk:
     mek = merk.Merk()
     isec = random.randint(0, ADN_LENGTH-1)
     mek.gen.adn = merk1.gen.adn[:isec] + merk2.gen.adn[isec:]

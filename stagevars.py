@@ -1,4 +1,3 @@
-
 import random
 import math
 
@@ -16,7 +15,7 @@ class Stagevars:
         self.x = random.randint(0, GRID_X)
         self.y = random.randint(0, GRID_Y)
         self.angle = random.randint(0, 3)
-        self.av = 1
+        self.moving = 1
         self.turn = 0
         self.health = 1
 
@@ -30,7 +29,7 @@ class Stagevars:
     def action(self):
         speed = 2
         self.angle = round(self.angle + self.turn) % 4
-        if self.av > 0:
+        if self.moving > 0:
             if self.angle == 0:
                 self.y = self.y - 1
             if self.angle == 1:
@@ -55,7 +54,7 @@ class Stagevars:
         return(x, y, self.angle)
 
     def set_activations(self, action):
-        self.av = round(action[0])
+        self.moving = round(action[0])
         self.turn = round(action[1]) - round(action[2])
 
 
@@ -66,7 +65,7 @@ def example():
 
     random.seed(5)
     a = Stagevars()
-    a.av = 1
+    a.moving = 1
     for i in range(10):
         a.action()
         a.turn = (random.random()-0.5)*2.0

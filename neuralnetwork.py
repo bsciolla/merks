@@ -2,6 +2,8 @@ import numpy
 import random
 import pdb
 import numpy as np
+from typing import List, Tuple, Optional, Union
+import numpy.typing as npt
 
 from globalvars import MAX_HASH, MAX_NEURONS, NEURAL_NOISE, FACTOR_MATRIX
 
@@ -12,7 +14,7 @@ from weightnode import weightnode as weight_node
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def satisfies(name, rule):
+def satisfies(name: List[int], rule: List[int]) -> bool:
     if len(rule) > len(name) or len(rule) == 0:
         return(False)
     for (idx, i) in enumerate(rule):
@@ -23,7 +25,7 @@ def satisfies(name, rule):
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def find_best_match(name, rule_names):
+def find_best_match(name: List[int], rule_names: List[List[int]]) -> Optional[int]:
     best = None
     for (idx, rule) in enumerate(rule_names):
         if satisfies(name, rule):
@@ -33,7 +35,7 @@ def find_best_match(name, rule_names):
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def bin_to_switch(b):
+def bin_to_switch(b: int) -> int:
     return(2*b - 1)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -41,40 +43,40 @@ def bin_to_switch(b):
 
 class Neuralnetwork:
 
-    def __init__(self):
-        self.nb_neurons = 3
-        self._max_neurons = MAX_NEURONS
-        self.neurons = [[0, 0, 1], [0, 0, 0], [0, 1]]
+    def __init__(self) -> None:
+        self.nb_neurons: int = 3
+        self._max_neurons: int = MAX_NEURONS
+        self.neurons: List[List[int]] = [[0, 0, 1], [0, 0, 0], [0, 1]]
 
         # a list which maps (weight number) -> list of neurons indices
         # namehash[weight_node([])] returns [9]
         self.refresh_namehash()
-        self.links = numpy.zeros([3, 3])
+        self.links: npt.NDArray[np.float64] = numpy.zeros([3, 3])
         self.create_link([0, 0, 1], [0, 0, 0], 1)
         self.create_link([0, 0, 0], [0, 1], 1)
 
-        self.activations = numpy.zeros([3])
+        self.activations: npt.NDArray[np.float64] = numpy.zeros([3])
 
     # ------------------------------------------------ #
 
-    def refresh_namehash(self):
-        self.namehash = [[] for i in range(MAX_HASH)]
+    def refresh_namehash(self) -> None:
+        self.namehash: List[List[int]] = [[] for i in range(MAX_HASH)]
         for (neuron_idx, neuron) in enumerate(self.neurons):
             self.namehash[weight_node(neuron)].append(neuron_idx)
 
     # ------------------------------------------------ #
 
-    def idx_to_name(self, idx):
+    def idx_to_name(self, idx: int) -> List[int]:
         return(self.neurons[idx])
 
     # ------------------------------------------------ #
 
-    def name_to_idx(self, name):
+    def name_to_idx(self, name: List[int]) -> List[int]:
         return(self.namehash[weight_node(name)])
 
     # ------------------------------------------------ #
 
-    def create_link(self, name1, name2, sign):
+    def create_link(self, name1: List[int], name2: List[int], sign: int) -> None:
         from_idxs = self.name_to_idx(name1)
         to_idxs = self.name_to_idx(name2)
         for i in from_idxs:
@@ -83,7 +85,7 @@ class Neuralnetwork:
 
     # ------------------------------------------------ #
 
-    def update_links(self, idx_from, name_to, codes):
+    def update_links(self, idx_from: int, name_to: List[int], codes: List[int]) -> None:
         idx_to_list = self.match_pattern(name_to)
         if codes[0] == 1:
             for idx_extra in idx_to_list:
@@ -94,13 +96,13 @@ class Neuralnetwork:
 
     # ------------------------------------------------ #
 
-    def match_pattern(self, name):
+    def match_pattern(self, name: List[int]) -> List[int]:
         return([i for (i, neuron) in enumerate(self.neurons)
                 if satisfies(neuron, name)])
 
     # ------------------------------------------------ #
 
-    def create_neuron(self, name):
+    def create_neuron(self, name: Optional[List[int]]) -> Optional[int]:
         if name is None or name == []:
             return None
         if self.nb_neurons >= self._max_neurons:
@@ -116,7 +118,7 @@ class Neuralnetwork:
 
     # ------------------------------------------------ #
 
-    def rename_neurons(self, prev_name, next_name):
+    def rename_neurons(self, prev_name: List[int], next_name: List[int]) -> None:
         get_idx = self.name_to_idx(prev_name)
         for idx in get_idx:
             self.neurons[idx] = next_name
@@ -124,7 +126,7 @@ class Neuralnetwork:
 
     # ------------------------------------------------ #
 
-    def rename_unique_neuron(self, idx, next_name):
+    def rename_unique_neuron(self, idx: int, next_name: List[int]) -> None:
         if next_name == []:
             self.delete_neuron(idx)
             return
@@ -133,7 +135,7 @@ class Neuralnetwork:
 
     # ------------------------------------------------ #
 
-    def delete_neuron(self, idx):
+    def delete_neuron(self, idx: int) -> None:
         if idx < 0 or idx >= self.nb_neurons:
             raise Exception("Wrong index for suppression")
         if self.nb_neurons <= 1:
@@ -154,19 +156,19 @@ class Neuralnetwork:
 
     # ------------------------------------------------ #
 
-    def nonempty_links_to(self, idx):
+    def nonempty_links_to(self, idx: int) -> npt.NDArray[np.int64]:
         truthlist = self.links[idx, :] != 0
         return(numpy.arange(self.nb_neurons)[truthlist])
 
     # ------------------------------------------------ #
 
-    def nonempty_links_from(self, idx):
+    def nonempty_links_from(self, idx: int) -> npt.NDArray[np.int64]:
         truthlist = self.links[:, idx] != 0
         return(numpy.arange(self.nb_neurons)[truthlist])
 
     # ------------------------------------------------ #
 
-    def create_neuron_from_model(self, idx_old, name_new, codes):
+    def create_neuron_from_model(self, idx_old: int, name_new: List[int], codes: List[int]) -> None:
         if name_new == [] or name_new is None:
             return
         try:
@@ -189,7 +191,7 @@ class Neuralnetwork:
 
     # ------------------------------------------------ #
 
-    def update_activations(self, sensors):
+    def update_activations(self, sensors: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
         # Set neuron values to activations
         self.activations[self.sensors_idx] = self.activations[self.sensors_idx] + \
             sensors[self.sensors_found]
@@ -206,7 +208,7 @@ class Neuralnetwork:
 
     # ------------------------------------------------ #
 
-    def sort_sensors_actions(self, sensors, actions):
+    def sort_sensors_actions(self, sensors: List[List[int]], actions: List[List[int]]) -> None:
         self.sensors_idx, self.sensors_found = \
             get_idx_list_for_sensors(self, sensors)
         self.actions_idx, self.actions_found = \
@@ -225,7 +227,7 @@ class Neuralnetwork:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def create_index_but(size, fixed):
+def create_index_but(size: int, fixed: List[int]) -> npt.NDArray[np.int64]:
     if len(fixed) == 0:
         return(numpy.arange(size))
     fixed = numpy.array(fixed)
@@ -237,14 +239,14 @@ def create_index_but(size, fixed):
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def permute_connectivity(mat, perm):
+def permute_connectivity(mat: npt.NDArray[np.float64], perm: List[int]) -> npt.NDArray[np.float64]:
     mat = mat[:, perm]
     return(mat[perm, :])
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def get_idx_list_for_sensors(nn, sensors):
+def get_idx_list_for_sensors(nn: Neuralnetwork, sensors: List[List[int]]) -> Tuple[List[int], List[bool]]:
     sensor_idx = []
     sensor_found = []
     for s in sensors:
