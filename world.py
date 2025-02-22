@@ -37,7 +37,7 @@ class World:
         self.stage_.refresh_costmap()
         for mek in self.merklist:
             actions = update_activations(mek, self.stage_)
-            mek.svars.set_activations(actions)
+            mek.merkState.set_activations(actions)
             mek.action()
             lifeanddeath.aging(mek, self.stage_)
         lifeanddeath.deathandrecycle(self.merklist)
@@ -47,13 +47,13 @@ class World:
 
 def update_sprites(spritelist: List, world: 'World') -> None:
     for ix, merk_sprite in enumerate(spritelist):
-        x, y, angle = world.merklist[ix].svars.get_pos()
+        x, y, angle = world.merklist[ix].merkState.get_pos()
         merk_sprite.update(x, y, angle)
 
 
 def update_activations(mek: merk.Merk, stage_: stage.Stage) -> np.ndarray:
-    x, y, angle = mek.svars.x, mek.svars.y, mek.svars.angle
+    x, y, angle = mek.merkState.x, mek.merkState.y, mek.merkState.angle
     sensorsdata = np.array(
         list(stage_.get_local_fields(x, y, angle)) + [1.0, -1.0])
     
-    return mek.nn.update_activations(sensorsdata)
+    return mek.neuralNetwork.update_activations(sensorsdata)

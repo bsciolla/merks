@@ -20,13 +20,13 @@ less = []
 ml = thisworld.merklist
 
 # Find most sensible nodes
-for ix, mek in enumerate(ml):
+for ix, merk in enumerate(ml):
 
-    nsensors = numpy.array(mek.nn.sensors_found).sum()
-    nactions = numpy.array(mek.nn.actions_found).sum()
+    nsensors = numpy.array(merk.nn.sensors_found).sum()
+    nactions = numpy.array(merk.nn.actions_found).sum()
     print('\n  ', ix)
     print("neurons: ",
-          mek.nn.nb_neurons)
+          merk.nn.nb_neurons)
     print("sensors: ", nsensors)
     print("actions: ",
           nactions
@@ -45,20 +45,20 @@ for idx in interest:
 
 gendist = []
 for mek2 in ml:
-    gendist.append(proxygen(mek, mek2))
+    gendist.append(proxygen(merk, mek2))
 
 gendist = numpy.array(gendist)
 gendist.mean()
 gendist[less].mean()
 
 for ix in healthsort[-10:]:
-    mek = ml[ix]
-    nsensors = numpy.array(mek.nn.sensors_found).sum()
-    nactions = numpy.array(mek.nn.actions_found).sum()
+    merk = ml[ix]
+    nsensors = numpy.array(merk.nn.sensors_found).sum()
+    nactions = numpy.array(merk.nn.actions_found).sum()
     print('\n  ', ix)
-    print(mek.nn.sensors_found)
+    print(merk.nn.sensors_found)
     print("neurons: ",
-          mek.nn.nb_neurons)
+          merk.nn.nb_neurons)
     print("sensors: ", nsensors)
     print("actions: ",
           nactions

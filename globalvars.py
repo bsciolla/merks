@@ -1,4 +1,3 @@
-
 import weightnode
 
 # genome.py
@@ -7,10 +6,10 @@ ADN_LENGTH = 1000
 MAX_HASH = weightnode.weightnode(
     [1 for i in range(MAX_BINARY_SIZE_FOR_NEURONS)]) + 1
 
-# nnbuilder.py
+# Grow.py
 BUILDING_CYCLES = 3
 
-# neuralnetwork.py
+# GrowNeuralNetwork.py
 MAX_NEURONS = 50
 NEURAL_NOISE = 0.6
 FACTOR_MATRIX = 0.5
@@ -29,7 +28,7 @@ PATCHSIZE = 70
 MERKS_NUM = 150
 CLOCK_FPS = 15
 
-# nnbuilder.py
+# GrowNeuralNetwork.py
 # costmap_value, costmap_grad_forw, costmap_grad_lat, activate, inhibate
 SENSORS = [[0], [1], [0, 0], [0, 0, 0], [1, 0, 0]]
 # move forward, turn left, turn right

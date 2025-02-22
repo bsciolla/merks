@@ -13,11 +13,11 @@ from globalvars import AGEING_RATE, NUM_RECYCLE, ADN_LENGTH
 
 
 def aging(mek: merk.Merk, stage_: stage.Stage) -> None:
-    field = stage_.get_local_cost(mek.svars.x, mek.svars.y)
-    if mek.svars.speed > 0.5:
-        mek.svars.health = mek.svars.health + AGEING_RATE/2.0
+    field = stage_.get_local_cost(mek.merkState.x, mek.merkState.y)
+    if mek.merkState.speed > 0.5:
+        mek.merkState.health = mek.merkState.health + AGEING_RATE/2.0
     else:
-        mek.svars.health = mek.svars.health - AGEING_RATE
+        mek.merkState.health = mek.merkState.health - AGEING_RATE
     # if mek.svars.av <= 0.1:
         #mek.svars.health = mek.svars.health - AGEING_RATE/2.0
     # if mek.svars.turn > -0.3:
@@ -27,7 +27,7 @@ def aging(mek: merk.Merk, stage_: stage.Stage) -> None:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 def deathandrecycle(merklist: List[merk.Merk]) -> None:
-    healthlist = numpy.array([mek.svars.health for mek in merklist])
+    healthlist = numpy.array([mek.merkState.health for mek in merklist])
     healthsort = healthlist.argsort()
     for i in range(0, NUM_RECYCLE):
         idx_die1 = healthsort[i]
@@ -41,7 +41,7 @@ def deathandrecycle(merklist: List[merk.Merk]) -> None:
 def newmerk(merk1: merk.Merk, merk2: merk.Merk) -> merk.Merk:
     mek = merk.Merk()
     isec = random.randint(0, ADN_LENGTH-1)
-    mek.gen.adn = merk1.gen.adn[:isec] + merk2.gen.adn[isec:]
+    mek.genome.adn = merk1.genome.adn[:isec] + merk2.genome.adn[isec:]
 
     iran1 = random.randint(0, ADN_LENGTH-1)
     iran2 = random.randint(0, ADN_LENGTH-1)
@@ -52,11 +52,11 @@ def newmerk(merk1: merk.Merk, merk2: merk.Merk) -> merk.Merk:
     if iran2-iran1 > 5:
         iran2 = iran1 + 5
     for i in range(iran1, iran2):
-        mek.gen.adn[i] = random.randint(0, 1)
+        mek.genome.adn[i] = random.randint(0, 1)
 
     for j in range(10):
-        mek.gen.adn[random.randint(0, ADN_LENGTH-1)] = random.randint(0, 1)
+        mek.genome.adn[random.randint(0, ADN_LENGTH-1)] = random.randint(0, 1)
 
-    mek.gen.make_clean_rules()
-    GrowNeuralNetwork.GrowNeuralNetwork(mek.nn, mek.gen, verbose=False)
+    mek.genome.make_clean_rules()
+    GrowNeuralNetwork.GrowNeuralNetwork(mek.neuralNetwork, mek.genome, verbose=False)
     return(mek)
