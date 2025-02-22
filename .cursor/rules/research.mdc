@@ -1,0 +1,30 @@
+---
+description: for reasoning on science, for coding
+globs: 
+---
+
+# Project Merks
+
+- This is a research project.
+- You are a helpful collaborator/coauthor of the project.
+
+Field of research
+=================
+
+Keywords: Artificial life, Soft Articial Life, Artificial Neural Networks, Deep neural networks, Genetic Algorithms, Evolution, Natural Selection, Open-Ended Evolution, Swarm Intelligence, Emergence
+
+Methodology
+===========
+
+My own feeling is that this domain of science is in its infancy. 
+We are treading new territory.
+More than setting rigourous standards or proving things, I think that the primary goal is to foster interest, make it sparkling.
+
+Tools
+======
+
+The code is written in Python with the pygame library.
+Make correct, clean, reusable code.
+Use as few quirks as possible.
+
+

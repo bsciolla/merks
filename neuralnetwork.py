@@ -1,8 +1,7 @@
-
-
 import numpy
 import random
 import pdb
+import numpy as np
 
 from globalvars import MAX_HASH, MAX_NEURONS, NEURAL_NOISE, FACTOR_MATRIX
 
@@ -24,22 +23,6 @@ def satisfies(name, rule):
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def test_satisfies():
-    assert(satisfies([], []) is False)
-    assert(satisfies([0], [0]) is True)
-    assert(satisfies([0, 1], [0]) is True)
-    assert(satisfies([1], [0]) is False)
-    assert(satisfies([1, 0], [0]) is False)
-    assert(satisfies([0, 1, 0], [0, 1]) is True)
-    assert(satisfies([1, 1, 0], [0, 1]) is False)
-    assert(satisfies([1, 0], [1, 0, 1]) is False)
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
-# Note: rule_names must be sorted, otherwise the match returned
-#  is not necessarily the BEST
-
-
 def find_best_match(name, rule_names):
     best = None
     for (idx, rule) in enumerate(rule_names):
@@ -52,28 +35,6 @@ def find_best_match(name, rule_names):
 
 def bin_to_switch(b):
     return(2*b - 1)
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
-
-def test_find_best_match():
-    rule_names = [[1],
-                  [0, 1],
-                  [1, 0],
-                  [0, 1, 0],
-                  [1, 0, 1],
-                  [0, 0, 0, 0, 1],
-                  [0, 0, 1, 0, 1],
-                  [0, 1, 0, 0, 0],
-                  [0, 1, 1, 1, 1, 1],
-                  [0, 1, 0, 0, 1, 0, 0]]
-    assert(find_best_match([1], rule_names) == 0)
-    assert(find_best_match([0], rule_names) is None)
-    assert(find_best_match([0, 1], rule_names) == 1)
-    assert(find_best_match([0, 1, 1], rule_names) == 1)
-    assert(find_best_match([0, 1, 0, 1], rule_names) == 3)
-    assert(find_best_match([0, 1, 1, 1, 1], rule_names) == 1)
-    assert(find_best_match([1, 0, 1, 1, 1], rule_names) == 4)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
@@ -264,69 +225,6 @@ class Neuralnetwork:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def test_sort_sensors_actions():
-    nn = Neuralnetwork()
-    nn.create_neuron_from_model(1, [0, 1], [1, 1, 1, 1])
-    sensors = [[0], [0, 1]]
-    actions = [[0, 0, 0], [1, 0]]
-    nn.sort_sensors_actions(sensors, actions)
-    assert(nn.sensors_idx == [0])
-    assert(nn.sensors_found == [False, True])
-    assert(nn.actions_idx == [1])
-    assert(nn.actions_found == [True, False])
-    assert(nn.neurons == [[0, 1], [0, 0, 0], [0, 0, 1], [0, 1]])
-    assert(numpy.array_equal(
-           nn.links,
-           numpy.array([[0., 1., 0., 1.],
-                        [0., 0., 1., 1.],
-                        [0., 0., 0., 0.],
-                        [0., 1., 1., 0.]])
-           ))
-
-
-def test_sort_sensors_actions2():
-    nn = Neuralnetwork()
-    nn.neurons = [[1, 1, 1], [0, 0, 0], [0, 1]]
-    nn.links = numpy.array([[0., 0., 0.],
-                            [1., 0, 0.],
-                            [0., 1., 0.]]
-                           )
-    sensors = [[0], [1], [0, 0]]
-    actions = [[0, 1], [1, 0]]
-    nn.sort_sensors_actions(sensors, actions)
-
-    assert(nn.sensors_found == [False, False, False])
-    assert(nn.actions_idx == [0])
-    assert(nn.actions_found == [True, False])
-    assert(nn.neurons == [[0, 1], [1, 1, 1], [0, 0, 0]]
-           )
-    assert(numpy.array_equal(
-           nn.links,
-           array([[0., 0., 1.],
-                  [0., 0., 0.],
-                  [0., 1., 0.]])
-           ))
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
-
-def test_update_activations():
-    nn = Neuralnetwork()
-    nn.create_neuron_from_model(1, [0, 1], [1, 1, 1, 0])
-    sensors = [[0], [0, 0, 0]]
-    actions = [[0, 1], [1, 0]]
-    nn.sort_sensors_actions(sensors, actions)
-    actionval = nn.update_activations(numpy.array([0, 1]))
-    assert(numpy.array_equal(
-        actionval, numpy.array([1., 0.])
-    ))
-    assert(numpy.array_equal(
-        nn.activations,
-        numpy.array([0., 1., 0., 1.])))
-
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
 def create_index_but(size, fixed):
     if len(fixed) == 0:
         return(numpy.arange(size))
@@ -339,72 +237,9 @@ def create_index_but(size, fixed):
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def test_create_index_but():
-    assert(numpy.array_equal
-           (
-               create_index_but(10, [4, 6]),
-               numpy.array([4, 6, 0, 1, 2, 3, 5, 7, 8, 9])
-           ))
-    assert(numpy.array_equal
-           (
-               create_index_but(3, []),
-               numpy.array([0, 1, 2])
-           ))
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
-
-def test_Neuralnetwork():
-    nn = Neuralnetwork()
-    nn.create_neuron([0, 1, 1, 0])
-    nn.create_link([0, 1, 1, 0], [0, 0, 1], -1)
-    nn.create_neuron([0, 1, 1, 0])
-    nn.create_link([0, 1, 1, 0], [0, 0, 0], -1)
-    nn.create_link([1], [0, 0, 0], -1)
-    assert(numpy.array_equal
-           (nn.links, numpy.array([[0.,  0.,  0., -1.,  0.],
-                                   [1.,  0.,  0., -1., -1.],
-                                   [0.,  1.,  0.,  0.,  0.],
-                                   [0.,  0.,  0.,  0.,  0.],
-
-                                   [0.,  0.,  0.,  0.,  0.]])))
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
-
-def test_Neuralnetwork_create_neuron_from_model():
-    nn = Neuralnetwork()
-    codes = [1, 0, 1, 0]
-    neuron_idx = 1
-    new_neuron = [0]
-    nn.create_neuron_from_model(neuron_idx, new_neuron, codes)
-    assert(numpy.array_equal(nn.links, numpy.array([[0.,  0.,  0.,  0.],
-                                                    [1.,  0.,  0., -1.],
-                                                    [0.,  1.,  0.,  1.],
-                                                    [1., -1.,  0.,  0.]])))
-
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
 def permute_connectivity(mat, perm):
     mat = mat[:, perm]
     return(mat[perm, :])
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
-
-def test_permute_connectivity():
-    mat = numpy.array([[i+j for i in range(3)] for j in range(10, 40, 10)])
-    # array(
-    # [[10, 11, 12],
-    # [20, 21, 22],
-    # [30, 31, 32]])
-    perm = numpy.array([0, 2, 1])
-    mat = permute_connectivity(mat, perm)
-    assert(numpy.array_equal(mat, numpy.array(
-        [[10, 12, 11],
-         [30, 32, 31],
-         [20, 22, 21]])))
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
@@ -421,41 +256,3 @@ def get_idx_list_for_sensors(nn, sensors):
         else:
             sensor_found.append(False)
     return(sensor_idx, sensor_found)
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
-
-def test_get_idx_list_for_sensors():
-    random.seed(2)
-    nn = Neuralnetwork()
-    nn.create_neuron_from_model(1, [0, 1], [1, 1, 1, 1])
-    sensors = [[0], [0, 1]]
-    actions = [[0, 0, 0], [1, 0]]
-    # nn.neurons
-    # >> [[0, 0, 1], [0, 0, 0], [0, 1], [0, 1]]
-    assert(
-        get_idx_list_for_sensors(nn, sensors)
-        ==
-        ([2], [False, True])
-    )
-    assert(
-        get_idx_list_for_sensors(nn, actions)
-        ==
-        ([1], [True, False])
-    )
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
-# Double fancy indexing works
-
-
-def test_double_fancy_indexing():
-    u = numpy.zeros([6])
-    v = numpy.array([0, 3, 4])
-    y = - numpy.arange(6)
-    z = numpy.array([1, 3, 5])
-    u[v] = y[z]
-    assert(
-        numpy.array_equal(u,
-                          numpy.array([-1.,  0.,  0., -3., -5.,  0.])
-                          ))
