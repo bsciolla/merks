@@ -1,3 +1,4 @@
+from typing import Optional
 import numpy
 import neuralnetwork
 import genome
@@ -5,11 +6,18 @@ import random
 
 from neuralnetwork import find_best_match
 from globalvars import BUILDING_CYCLES, SENSORS, ACTIONS
+from neuralnetwork import Neuralnetwork
+from genome import Genome
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def build_nn(nn, gen, building_cycles=BUILDING_CYCLES, verbose=False):
+def GrowNeuralNetwork(
+    nn: Neuralnetwork,
+    gen: Genome,
+    building_cycles: int = BUILDING_CYCLES,
+    verbose: bool = False
+) -> None:
 
     for cycle in range(building_cycles):
 
@@ -22,9 +30,9 @@ def build_nn(nn, gen, building_cycles=BUILDING_CYCLES, verbose=False):
                 continue
             rule = gen.rules[rule_idx]
 
-            if verbose is True:
+            if verbose:
                 print(nn.nb_neurons)
-                print("index: "+str(neuron_idx))
+                print(f"index: {neuron_idx}")
                 rule.print()
 
             # Create new neuron
@@ -38,7 +46,7 @@ def build_nn(nn, gen, building_cycles=BUILDING_CYCLES, verbose=False):
             elif rule.successor == []:
                 nn.update_links(neuron_idx, rule.extra, rule.codes)
 
-            if verbose == True:
+            if verbose:
                 print("Building neurons")
                 print(neuron_idx)
                 rule.print()

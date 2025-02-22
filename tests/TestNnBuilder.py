@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 import random
-from nnbuilder import build_nn
+from GrowNeuralNetwork import GrowNeuralNetwork
 from neuralnetwork import Neuralnetwork
 from genome import Genome
 from globalvars import BUILDING_CYCLES, SENSORS, ACTIONS
@@ -16,7 +16,7 @@ class TestNnBuilder(unittest.TestCase):
         self.test_actions = [[0, 1], [1, 0], [1, 1]]
 
     def test_build_nn(self):
-        build_nn(self.nn, self.gen, verbose=False)
+        GrowNeuralNetwork(self.nn, self.gen, verbose=False)
         
         expected_neurons = [[0], [1], [0, 1], [1, 1, 1], [1, 1, 1], 
                           [1, 1, 1], [1, 1, 1], [1], [0]]
@@ -37,7 +37,7 @@ class TestNnBuilder(unittest.TestCase):
 
     def test_build_nn_with_verbose(self):
         # Just testing that verbose mode doesn't break anything
-        build_nn(self.nn, self.gen, verbose=True)
+        GrowNeuralNetwork(self.nn, self.gen, verbose=True)
         self.assertGreater(len(self.nn.neurons), 0)
 
 if __name__ == '__main__':

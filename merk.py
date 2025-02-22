@@ -2,7 +2,7 @@ from typing import Optional
 import neuralnetwork
 import genome
 import random
-import nnbuilder
+import GrowNeuralNetwork
 import merkstate
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -22,7 +22,7 @@ class Merk:
     def build_random_merk(self) -> None:
         self.gen.random_adn()
         self.gen.make_clean_rules()
-        nnbuilder.build_nn(self.nn, self.gen, verbose=False)
+        GrowNeuralNetwork.GrowNeuralNetwork(self.nn, self.gen, verbose=False)
 
     # ------------------------------------------------ #
 

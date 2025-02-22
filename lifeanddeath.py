@@ -1,7 +1,7 @@
 from typing import List
 import stage
 import merk
-import nnbuilder
+import GrowNeuralNetwork
 
 import numpy
 import random
@@ -58,5 +58,5 @@ def newmerk(merk1: merk.Merk, merk2: merk.Merk) -> merk.Merk:
         mek.gen.adn[random.randint(0, ADN_LENGTH-1)] = random.randint(0, 1)
 
     mek.gen.make_clean_rules()
-    nnbuilder.build_nn(mek.nn, mek.gen, verbose=False)
+    GrowNeuralNetwork.GrowNeuralNetwork(mek.nn, mek.gen, verbose=False)
     return(mek)
