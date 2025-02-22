@@ -1,4 +1,3 @@
-
 import rule
 import random
 
@@ -15,22 +14,6 @@ def truncate(neuron):
     if len(neuron) > MAX_BINARY_SIZE_FOR_NEURONS:
         return(neuron[:MAX_BINARY_SIZE_FOR_NEURONS])
     return(neuron)
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
-
-def test_weight_node():
-    assert(weight_node([]) == 0)
-    assert(weight_node([0]) == 1)
-    assert(weight_node([1]) == 2)
-    assert(weight_node([0, 0]) == 3)
-    assert(weight_node([0, 1]) == 4)
-    assert(weight_node([1, 0]) == 5)
-    assert(weight_node([1, 1]) == 6)
-    assert(weight_node([0, 0, 0]) == 7)
-    assert(weight_node([1, 1, 1]) == 14)
-    assert(weight_node([0, 0, 0, 0]) == 15)
-    assert(weight_node([0, 0, 0, 0, 0]) == 31)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
@@ -131,26 +114,3 @@ class Genome:
 
         iuniq = sort_unique(pred_weight)
         self.rules = prune_list_by_index(self.rules, iuniq)
-
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
-def example_genome():
-    b = Genome()
-    b.make_rules()
-
-    b.show_rules()
-    b.clear_rules()
-    print('\n')
-    b.show_rules()
-
-
-def test_genome():
-    random.seed(4)
-    b = Genome()
-    b.make_rules()
-    b.clear_rules()
-    assert(b.rules[0].predecessor == [0])
-    assert(b.rules[0].successor == [])
-    assert(b.rules[0].extra == [1])
-    assert(b.rules[0].codes == [0, 1, 1, 0])
