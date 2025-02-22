@@ -1,5 +1,10 @@
 import os
 import pygame
+import numpy
+import world
+import random
+random.seed(112)
+
 
 from pygame.locals import KEYDOWN, \
     RLEACCEL, K_ESCAPE, QUIT, MOUSEBUTTONDOWN, MOUSEBUTTONUP, K_q, K_p
@@ -11,10 +16,6 @@ data_dir = os.path.join(main_dir, 'data')
 from globalvars import WIN_X, WIN_Y, MERKS_NUM, CLOCK_FPS, GRID_X, GRID_Y, \
     GRID_ELEMENT_SIZE_X, GRID_ELEMENT_SIZE_Y
 
-import numpy
-import world
-import random
-random.seed(112)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 

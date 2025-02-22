@@ -1,9 +1,9 @@
-
+from typing import List
+import numpy as np
 import stage
 import merk
 import lifeanddeath
 
-import numpy
 import random
 import math
 import matplotlib as plt
@@ -21,17 +21,18 @@ class World:
 
     # ------------------------------------------------ #
 
-    def __init__(self, merks_num=0):
-        self.stage_ = stage.Stage()
-        self.merklist = []
-        self.merks_num = merks_num
-        for i in range(merks_num):
-            self.merklist.append(merk.Merk())
-            self.merklist[-1].build_random_merk()
+    def __init__(self, merks_num: int = 0) -> None:
+        self.stage_: stage.Stage = stage.Stage()
+        self.merklist: List[merk.Merk] = []
+        self.merks_num: int = merks_num
+        for _ in range(merks_num):
+            new_merk = merk.Merk()
+            new_merk.build_random_merk()
+            self.merklist.append(new_merk)
 
     # ------------------------------------------------ #
 
-    def step_forward(self):
+    def step_forward(self) -> None:
         self.stage_.move_areas()
         self.stage_.refresh_costmap()
         for mek in self.merklist:
@@ -44,15 +45,15 @@ class World:
     # ------------------------------------------------ #
 
 
-def update_sprites(spritelist, world):
-    for (ix, merk) in enumerate(spritelist):
+def update_sprites(spritelist: List, world: 'World') -> None:
+    for ix, merk_sprite in enumerate(spritelist):
         x, y, angle = world.merklist[ix].svars.get_pos()
-        merk.update(x, y, angle)
+        merk_sprite.update(x, y, angle)
 
 
-def update_activations(mek, stage_):
+def update_activations(mek: merk.Merk, stage_: stage.Stage) -> np.ndarray:
     x, y, angle = mek.svars.x, mek.svars.y, mek.svars.angle
-    sensorsdata = numpy.array(
+    sensorsdata = np.array(
         list(stage_.get_local_fields(x, y, angle)) + [1.0, -1.0])
-    actions = mek.nn.update_activations(sensorsdata)
-    return(actions)
+    
+    return mek.nn.update_activations(sensorsdata)

@@ -1,4 +1,4 @@
-
+from typing import Optional
 import neuralnetwork
 import genome
 import random
@@ -12,27 +12,27 @@ class Merk:
 
     # ------------------------------------------------ #
 
-    def __init__(self):
-        self.nn = neuralnetwork.Neuralnetwork()
-        self.gen = genome.Genome(auto_initialize=False)
-        self.svars = stagevars.Stagevars()
+    def __init__(self) -> None:
+        self.nn: neuralnetwork.Neuralnetwork = neuralnetwork.Neuralnetwork()
+        self.gen: genome.Genome = genome.Genome(auto_initialize=False)
+        self.svars: stagevars.Stagevars = stagevars.Stagevars()
 
     # ------------------------------------------------ #
 
-    def build_random_merk(self):
+    def build_random_merk(self) -> None:
         self.gen.random_adn()
         self.gen.make_clean_rules()
         nnbuilder.build_nn(self.nn, self.gen, verbose=False)
 
     # ------------------------------------------------ #
 
-    def action(self):
+    def action(self) -> None:
         self.svars.action()
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def example():
+def example() -> None:
     random.seed(5)
     a = Merk()
     a.build_random_merk()
