@@ -1,5 +1,6 @@
 import random
 import math
+import numpy as np
 
 from globalvars import WIN_X, WIN_Y, GRID_X, GRID_Y
 
@@ -9,25 +10,25 @@ class Stagevars:
 
     # ------------------------------------------------ #
 
-    def __init__(self):
+    def __init__(self) -> None:
 
         # general implicit
-        self.x = random.randint(0, GRID_X)
-        self.y = random.randint(0, GRID_Y)
-        self.angle = random.randint(0, 3)
-        self.moving = 1
-        self.turn = 0
-        self.health = 1
-        self.speed = 2
+        self.x: int = random.randint(0, GRID_X)
+        self.y: int = random.randint(0, GRID_Y)
+        self.angle: int = random.randint(0, 3)
+        self.moving: int = 1
+        self.turn: int = 0
+        self.health: float = 1.0
+        self.speed: int = 2
 
         # sensors
-        self.costmap_grad_forw = 0
-        self.costmap_grad_lat = 0
-        self.costmap_value = 0
+        self.costmap_grad_forw: float = 0.0
+        self.costmap_grad_lat: float = 0.0
+        self.costmap_value: float = 0.0
 
     # ------------------------------------------------ #
 
-    def action(self):
+    def action(self) -> None:
         self.speed = 2
         self.angle = round(self.angle + self.turn) % 4
         if self.moving > 0:
@@ -48,13 +49,12 @@ class Stagevars:
 
     # ------------------------------------------------ #
 
-    def get_pos(self):
-
+    def get_pos(self) -> np.ndarray:
         x = (int)(self.x % GRID_X)
         y = (int)(self.y % GRID_Y)
-        return(x, y, self.angle)
+        return np.array([x, y, self.angle], dtype=int)
 
-    def set_activations(self, action):
+    def set_activations(self, action: np.ndarray) -> None:
         self.moving = round(action[0])
         self.turn = round(action[1]) - round(action[2])
 
@@ -62,7 +62,7 @@ class Stagevars:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def example():
+def example() -> None:
 
     random.seed(5)
     a = Stagevars()

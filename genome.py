@@ -1,10 +1,9 @@
-import rule
+from typing import List, Optional, Any
 import random
+from dataclasses import dataclass
 
-from globalvars import ADN_LENGTH
-from globalvars import MAX_BINARY_SIZE_FOR_NEURONS
-from globalvars import MAX_HASH
-
+from rule import Rule
+from globalvars import ADN_LENGTH, MAX_BINARY_SIZE_FOR_NEURONS, MAX_HASH
 from weightnode import weightnode as weight_node
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -45,11 +44,14 @@ def sort_unique(weight):
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
+@dataclass
 class Genome:
+    adn: List[int]
+    rules: List[Rule]
+    adn_length: int = ADN_LENGTH
 
-    def __init__(self, auto_initialize=True):
-        self.adn_length = ADN_LENGTH
-        if auto_initialize is True:
+    def __init__(self, auto_initialize: bool = True) -> None:
+        if auto_initialize:
             self.random_adn()
         else:
             self.adn = []
@@ -57,60 +59,52 @@ class Genome:
 
     # ------------------------------------------------ #
 
-    def make_rules(self):
-
+    def make_rules(self) -> None:
         local_adn = self.adn
-        while (len(local_adn) > 0):
-
-            nextrule = rule.Rule()
+        while len(local_adn) > 0:
+            nextrule = Rule()
             local_adn = nextrule.build_from_adn(local_adn)
-
+            
             if nextrule.isRule():
                 self.rules.append(nextrule)
 
     # ------------------------------------------------ #
 
-    def random_adn(self):
-        self.adn = [random.randint(0, 1)
-                    for i in range(self.adn_length)]
+    def random_adn(self) -> None:
+        self.adn = [random.randint(0, 1) for _ in range(self.adn_length)]
 
     # ------------------------------------------------ #
 
-    def make_clean_rules(self):
+    def make_clean_rules(self) -> None:
         self.make_rules()
         self.clear_rules()
 
     # ------------------------------------------------ #
 
-    def get_predecessors(self):
-        return([rule.predecessor for rule in self.rules])
+    def get_predecessors(self) -> List[str]:
+        return [rule.predecessor for rule in self.rules]
 
     # ------------------------------------------------ #
 
-    def show_rules(self):
+    def show_rules(self) -> None:
         for rule in self.rules:
             print("------------")
             rule.print()
 
     # ------------------------------------------------ #
 
-    def clear_rules(self):
-        newrules = []
-        for rule in self.rules:
-            if len(rule.predecessor) > 0:
-                if len(rule.successor) + len(rule.extra) > 0:
-                    newrules.append(rule)
-        self.rules = newrules
+    def clear_rules(self) -> None:
+        self.rules = [
+            rule for rule in self.rules 
+            if len(rule.predecessor) > 0 and 
+               (len(rule.successor) + len(rule.extra) > 0)
+        ]
 
         for rule in self.rules:
             rule.predecessor = truncate(rule.predecessor)
             rule.successor = truncate(rule.successor)
             rule.extra = truncate(rule.extra)
 
-        # Sort by predecessor weight and keep only
-        #  one rule for each predecessor
-        pred_weight = [weight_node(self.rules[i].predecessor)
-                       for i in range(len(self.rules))]
-
+        pred_weight = [weight_node(rule.predecessor) for rule in self.rules]
         iuniq = sort_unique(pred_weight)
         self.rules = prune_list_by_index(self.rules, iuniq)

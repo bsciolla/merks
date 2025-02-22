@@ -1,10 +1,10 @@
-
 import stagevars
 import numpy
 import random
 import math
 #import matplotlib as plt
 #import matplotlib.pyplot as plt
+from typing import Tuple
 
 from globalvars import WIN_X, WIN_Y, NB_AREAS, PATCHSIZE, \
     GRID_X, GRID_Y, GRID_ELEMENT_SIZE_X, GRID_ELEMENT_SIZE_Y
@@ -16,22 +16,22 @@ class Stage:
 
     # ------------------------------------------------ #
 
-    def __init__(self):
-        self.costmap = numpy.zeros([WIN_X, WIN_Y])
-        self.nbareas = NB_AREAS
-        self.areas = numpy.zeros([2, self.nbareas])
-        self.patch = _patch(PATCHSIZE, PATCHSIZE)
+    def __init__(self) -> None:
+        self.costmap: numpy.ndarray = numpy.zeros([WIN_X, WIN_Y])
+        self.nbareas: int = NB_AREAS
+        self.areas: numpy.ndarray = numpy.zeros([2, self.nbareas])
+        self.patch: numpy.ndarray = _patch(PATCHSIZE, PATCHSIZE)
 
         # find gradient scale
-        self.gradscalex = (self.patch[1:, :]-self.patch[:-1, :]).max()
-        self.gradscaley = (self.patch[:, 1:]-self.patch[:, :-1]).max()
+        self.gradscalex: float = (self.patch[1:, :]-self.patch[:-1, :]).max()
+        self.gradscaley: float = (self.patch[:, 1:]-self.patch[:, :-1]).max()
 
         self.random_areas()
         self.refresh_costmap()
 
     # ------------------------------------------------ #
 
-    def refresh_costmap(self):
+    def refresh_costmap(self) -> None:
         self.costmap = numpy.zeros([WIN_X, WIN_Y])
         for i in range(self.areas.shape[1]):
             xp = int(self.areas[0, i])
@@ -42,14 +42,14 @@ class Stage:
 
     # ------------------------------------------------ #
 
-    def random_areas(self):
+    def random_areas(self) -> None:
         for j in range(self.areas.shape[1]):
             self.areas[0, j] = random.random() * (WIN_X - PATCHSIZE - 1)
             self.areas[1, j] = random.random() * (WIN_Y - PATCHSIZE - 1)
 
     # ------------------------------------------------ #
 
-    def move_areas(self):
+    def move_areas(self) -> None:
         step = 2
         for j in range(self.areas.shape[1]):
             self.areas[0, j] = self.areas[0, j] + step*(random.random()-0.4)
@@ -59,7 +59,7 @@ class Stage:
 
     # ------------------------------------------------ #
 
-    def get_local_fields(self, x, y, angle):
+    def get_local_fields(self, x: float, y: float, angle: float) -> Tuple[float, float, float]:
         x = (int)(x % (WIN_X - 1))
         y = (int)(y % (WIN_Y - 1))
 
@@ -75,14 +75,14 @@ class Stage:
 
     # ------------------------------------------------ #
 
-    def get_local_cost(self, x, y):
+    def get_local_cost(self, x: float, y: float) -> float:
         x = (int)(x % (WIN_X - 1))
         y = (int)(y % (WIN_Y - 1))
         return(self.costmap[x, y])
 
     # ------------------------------------------------ #
 
-    def displaymap(self):
+    def displaymap(self) -> numpy.ndarray:
         costmap = self.costmap > 0.5
         showmap = numpy.zeros([costmap.shape[0],
                                costmap.shape[1],
@@ -98,7 +98,7 @@ class Stage:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 
-def _patch(sizex, sizey):
+def _patch(sizex: int, sizey: int) -> numpy.ndarray:
     patch = numpy.zeros([sizex, sizey])
     sigma = 0.15
     for i in range(sizex):
@@ -110,7 +110,7 @@ def _patch(sizex, sizey):
     return(patch)
 
 
-def example():
+def example() -> None:
     random.seed(8)
     a = Stage()
     a.areas
