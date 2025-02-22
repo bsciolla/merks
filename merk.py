@@ -3,7 +3,7 @@ import neuralnetwork
 import genome
 import random
 import GrowNeuralNetwork
-import merkstate
+import MerkState
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
@@ -15,7 +15,7 @@ class Merk:
     def __init__(self) -> None:
         self.neuralNetwork: neuralnetwork.Neuralnetwork = neuralnetwork.Neuralnetwork()
         self.genome: genome.Genome = genome.Genome(auto_initialize=False)
-        self.merkState: merkstate.MerkState = merkstate.MerkState()
+        self.merkState: MerkState.MerkState = MerkState.MerkState()
 
     # ------------------------------------------------ #
 

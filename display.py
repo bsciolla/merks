@@ -5,9 +5,8 @@ import world
 import random
 random.seed(112)
 
+from pygame.locals import *
 
-from pygame.locals import KEYDOWN, \
-    RLEACCEL, K_ESCAPE, QUIT, MOUSEBUTTONDOWN, MOUSEBUTTONUP, K_q, K_p
 from pygame.transform import rotate
 
 main_dir = os.path.split(os.path.abspath(__file__))[0]
@@ -51,6 +50,18 @@ class Merksprite(pygame.sprite.Sprite):
         self.image = rotate(self.original, -angle*90.0)
 
 
+def ShowMerk():
+    if not thisworld or not thisworld.merklist:
+        return
+    
+    # Find the merk with the best health
+    best_merk = max(thisworld.merklist, key=lambda merk: merk.merkState.health)
+    
+    # Plot its neural network
+    if hasattr(best_merk, 'neuralNetwork'):
+        from plot_graphs import plot_neural_network
+        plot_neural_network(best_merk)
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 # def main():
@@ -61,11 +72,6 @@ try:
     screen = pygame.display.set_mode((WIN_X, WIN_Y))
     pygame.display.set_caption('World of merks')
     pygame.mouse.set_visible(1)
-
-
-#showmap = thisworld.stage_.displaymap()
-    #snapshot = pygame.surfarray.make_surface(showmap)
-    #screen.blit(snapshot, (0, 0))
     pygame.display.flip()
     clock = pygame.time.Clock()
 
@@ -92,6 +98,8 @@ try:
                 pause = not pause
             elif event.type == MOUSEBUTTONDOWN:
                 going = True
+            elif event.type == KEYDOWN and event.key == K_m:
+                ShowMerk()
 
         if pause == True:
             continue

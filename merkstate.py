@@ -1,8 +1,11 @@
 import random
 import math
 import numpy as np
-
+from typing import NewType
+from numpy.typing import NDArray
 from globalvars import WIN_X, WIN_Y, GRID_X, GRID_Y
+
+Activation = NewType('Activation', NDArray[np.float64])
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
@@ -54,7 +57,7 @@ class MerkState:
         y = (int)(self.y % GRID_Y)
         return np.array([x, y, self.angle], dtype=int)
 
-    def set_activations(self, action: np.ndarray) -> None:
+    def set_activations(self, action: Activation) -> None:
         self.moving = round(action[0])
         self.turn = round(action[1]) - round(action[2])
 

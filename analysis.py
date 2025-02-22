@@ -1,6 +1,7 @@
 
 from globalvars import SENSORS, ACTIONS
 from plot_graphs import plot_neural_network
+import numpy
 # Utility functions to analyze the current species
 
 

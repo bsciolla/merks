@@ -13,6 +13,7 @@ from globalvars import WIN_X
 from globalvars import WIN_Y
 from globalvars import NB_AREAS
 from globalvars import PATCHSIZE
+from MerkState import Activation
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
@@ -35,11 +36,11 @@ class World:
     def step_forward(self) -> None:
         self.stage_.move_areas()
         self.stage_.refresh_costmap()
-        for mek in self.merklist:
-            actions = update_activations(mek, self.stage_)
-            mek.merkState.set_activations(actions)
-            mek.action()
-            lifeanddeath.aging(mek, self.stage_)
+        for merk in self.merklist:
+            actions = update_activations(merk, self.stage_)
+            merk.merkState.set_activations(actions)
+            merk.action()
+            lifeanddeath.aging(merk, self.stage_)
         lifeanddeath.deathandrecycle(self.merklist)
 
     # ------------------------------------------------ #
@@ -51,7 +52,7 @@ def update_sprites(spritelist: List, world: 'World') -> None:
         merk_sprite.update(x, y, angle)
 
 
-def update_activations(mek: merk.Merk, stage_: stage.Stage) -> np.ndarray:
+def update_activations(mek: merk.Merk, stage_: stage.Stage) -> Activation:
     x, y, angle = mek.merkState.x, mek.merkState.y, mek.merkState.angle
     sensorsdata = np.array(
         list(stage_.get_local_fields(x, y, angle)) + [1.0, -1.0])

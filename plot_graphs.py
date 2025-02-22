@@ -1,26 +1,28 @@
-
 import matplotlib.pyplot as plt
 import networkx as nx
-import numpy
-plt.ion()
+import numpy as np
+from typing import Any, Dict, List, Tuple
+from merk import Merk
+plt.ioff()
 
 
 # test
-def plot_neural_network(mek):
-    G = nx.DiGraph(numpy.transpose(mek.nn.links))
-    mylabels = dict(zip(range(len(mek.nn.neurons)),
-                        [to_string(i)+'\n#'
-                         + str(ix)+'' for (ix, i) in enumerate(mek.nn.neurons)]))
+def plot_neural_network(mek: Merk) -> None:
+    G = nx.DiGraph(np.transpose(mek.neuralNetwork.links))
+    mylabels: Dict[int, str] = dict(zip(
+        range(len(mek.neuralNetwork.neurons)),
+        [to_string(i) + '\n#' + str(ix) for (ix, i) in enumerate(mek.neuralNetwork.neurons)]
+    ))
 
     G = nx.relabel_nodes(G, mylabels)
     pos = nx.layout.spring_layout(G, k=2)
 
-    epos = [(u, v) for (u, v, d) in G.edges(data=True) if d['weight'] > 0.5]
-    eneg = [(u, v) for (u, v, d) in G.edges(data=True) if d['weight'] <= -0.5]
+    epos: List[Tuple[Any, Any]] = [(u, v) for (u, v, d) in G.edges(data=True) if d['weight'] > 0.5]
+    eneg: List[Tuple[Any, Any]] = [(u, v) for (u, v, d) in G.edges(data=True) if d['weight'] <= -0.5]
 
     arrowsize = 50
-    colorspos = numpy.arange(len(epos))/5.0+4.0*len(epos)/5.0
-    colorsneg = numpy.arange(len(eneg))/5.0+4.0*len(eneg)/5.0
+    colorspos = np.arange(len(epos)) / 5.0 + 4.0 * len(epos) / 5.0
+    colorsneg = np.arange(len(eneg)) / 5.0 + 4.0 * len(eneg) / 5.0
     nx.draw_networkx_edges(G, pos, edgelist=epos, edge_color=colorspos,
                            width=3, arrowsize=arrowsize, alpha=1, arrowstyle='->', edge_cmap=plt.cm.Blues)
     nx.draw_networkx_edges(G, pos, edgelist=eneg,
@@ -32,11 +34,9 @@ def plot_neural_network(mek):
                             font_family='sans-serif', font_weight='bold')
     ax = plt.gca()
     ax.set_axis_off()
-    plt.show()
+    plt.show(block=True)
+    return
 
 
-def to_string(name):
-    out = ""
-    for i in name:
-        out = out + str(i)
-    return(out)
+def to_string(name: Any) -> str:
+    return ''.join(str(i) for i in name)

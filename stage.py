@@ -1,9 +1,9 @@
-import merkstate
+import MerkState
 import numpy
 import random
 import math
-#import matplotlib as plt
-#import matplotlib.pyplot as plt
+import matplotlib as plt
+import matplotlib.pyplot as plt
 from typing import Tuple
 
 from globalvars import WIN_X, WIN_Y, NB_AREAS, PATCHSIZE, \

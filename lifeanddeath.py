@@ -14,10 +14,14 @@ from globalvars import AGEING_RATE, NUM_RECYCLE, ADN_LENGTH
 
 def aging(mek: merk.Merk, stage_: stage.Stage) -> None:
     field = stage_.get_local_cost(mek.merkState.x, mek.merkState.y)
-    if mek.merkState.speed > 0.5:
-        mek.merkState.health = mek.merkState.health + AGEING_RATE/2.0
-    else:
-        mek.merkState.health = mek.merkState.health - AGEING_RATE
+    delta = 0
+    if abs(mek.merkState.turn) > 0.5:
+        delta += 0.25
+    if mek.merkState.moving > 0.5:
+        delta += 0.25
+    
+    mek.merkState.health += delta * AGEING_RATE
+    
     # if mek.svars.av <= 0.1:
         #mek.svars.health = mek.svars.health - AGEING_RATE/2.0
     # if mek.svars.turn > -0.3:
