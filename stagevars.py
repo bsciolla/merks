@@ -18,6 +18,7 @@ class Stagevars:
         self.moving = 1
         self.turn = 0
         self.health = 1
+        self.speed = 2
 
         # sensors
         self.costmap_grad_forw = 0
@@ -27,7 +28,7 @@ class Stagevars:
     # ------------------------------------------------ #
 
     def action(self):
-        speed = 2
+        self.speed = 2
         self.angle = round(self.angle + self.turn) % 4
         if self.moving > 0:
             if self.angle == 0:
