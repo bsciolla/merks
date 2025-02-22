@@ -1,7 +1,5 @@
-
 import os
 import pygame
-from pygame.compat import geterror
 
 from pygame.locals import KEYDOWN, \
     RLEACCEL, K_ESCAPE, QUIT, MOUSEBUTTONDOWN, MOUSEBUTTONUP, K_q, K_p
@@ -25,12 +23,12 @@ def load_image(name, colorkey=None):
     fullname = os.path.join(data_dir, name)
     try:
         image = pygame.image.load(fullname)
-    except pygame.error:
+    except pygame.error as e:
         print('Cannot load image:', fullname)
-        raise SystemExit(str(geterror()))
+        raise SystemExit(str(e))
     image = image.convert()
     if colorkey is not None:
-        if colorkey is -1:
+        if colorkey == -1:
             colorkey = image.get_at((0, 0))
         image.set_colorkey(colorkey, RLEACCEL)
     return image, image.get_rect()
