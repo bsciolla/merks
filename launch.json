@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: display.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/display.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "python": "${workspaceFolder}/.Venv/Scripts/python.exe"
+        }
+    ]
+}
