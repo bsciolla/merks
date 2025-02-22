@@ -6,7 +6,7 @@ from globalvars import WIN_X, WIN_Y, GRID_X, GRID_Y
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
-class Stagevars:
+class MerkState:
 
     # ------------------------------------------------ #
 
@@ -65,7 +65,7 @@ class Stagevars:
 def example() -> None:
 
     random.seed(5)
-    a = Stagevars()
+    a = MerkState()
     a.moving = 1
     for i in range(10):
         a.action()

@@ -3,7 +3,7 @@ import neuralnetwork
 import genome
 import random
 import nnbuilder
-import stagevars
+import merkstate
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
@@ -15,7 +15,7 @@ class Merk:
     def __init__(self) -> None:
         self.nn: neuralnetwork.Neuralnetwork = neuralnetwork.Neuralnetwork()
         self.gen: genome.Genome = genome.Genome(auto_initialize=False)
-        self.svars: stagevars.Stagevars = stagevars.Stagevars()
+        self.svars: merkstate.MerkState = merkstate.MerkState()
 
     # ------------------------------------------------ #
 
